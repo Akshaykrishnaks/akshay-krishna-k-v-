@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-script: "Great Vibes", cursive;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-warm-bg: #F7F6F3;
+  --color-warm-beige: #E6DFD6;
+  --color-warm-beige-light: #F2EFE9;
+  --color-soft-grey: #EDEDED;
+  --color-charcoal: #2B2B2B;
+  --color-charcoal-muted: #5E5E5A;
+  --color-charcoal-light: #888882;
+  
+  --color-sage: #8FA892;
+  --color-sage-dark: #648168;
+  --color-sage-deep: #4A634E;
+  --color-sage-light: #E2ECE4;
+  --color-sage-soft: #F1F6F2;
+}
+
+/* Custom Base & Smooth Aesthetics */
+:root {
+  --bg-primary: #F7F6F3;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.98);
+  --border-soft: rgba(230, 223, 214, 0.8);
+  --border-accent: rgba(143, 168, 146, 0.35);
+  --text-main: #2B2B2B;
+  --text-sub: #5E5E5A;
+  --text-muted: #888882;
+  --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 20px 25px -15px rgba(143, 168, 146, 0.08);
+  --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.09), 0 25px 30px -15px rgba(143, 168, 146, 0.15);
+  --shadow-frame: 18px 22px 0px 0px rgba(230, 223, 214, 0.7);
+}
+
+.dark {
+  --bg-primary: #151715;
+  --bg-card: rgba(28, 30, 28, 0.85);
+  --bg-card-hover: rgba(35, 38, 35, 0.95);
+  --border-soft: rgba(55, 60, 56, 0.6);
+  --border-accent: rgba(143, 168, 146, 0.3);
+  --text-main: #EDECE8;
+  --text-sub: #B5B5AF;
+  --text-muted: #7D807A;
+  --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
+  --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  --shadow-frame: 16px 20px 0px 0px rgba(38, 42, 38, 0.9);
+}
+
+html,
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-panel:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.portrait-frame {
+  box-shadow: var(--shadow-frame);
+  border: 10px solid #FFFFFF;
+}
+
+.dark .portrait-frame {
+  border-color: #262A26;
+  box-shadow: var(--shadow-frame);
+}
+
+/* Botanical Organic Shapes */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(12px, -18px) rotate(3deg) scale(1.03);
+  }
+  66% {
+    transform: translate(-10px, 12px) rotate(-3deg) scale(0.98);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 18s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatSlow 22s ease-in-out infinite reverse;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F6F3;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #151715;
+}
+::-webkit-scrollbar-thumb {
+  background: #8FA892;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #648168;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
